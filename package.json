@@ -1,0 +1,28 @@
+{
+  "name": "catch-coding-challenge1",
+  "version": "0.1.0",
+  "description": "A JSON Grabber",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AzrulSudarmin/catch-coding-challenge1.git"
+  },
+  "keywords": [
+    "Nodejs"
+  ],
+  "author": "Azrul Sudarmin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AzrulSudarmin/catch-coding-challenge1/issues"
+  },
+  "homepage": "https://github.com/AzrulSudarmin/catch-coding-challenge1#readme",
+  "dependencies": {
+    "csv-write-stream": "^2.0.0",
+    "event-stream": "^4.0.1",
+    "fs": "0.0.1-security",
+    "request": "^2.88.0"
+  }
+}
