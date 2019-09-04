@@ -1,5 +1,4 @@
-const downloader = require('./lib/downloader');
-const csvgenerator = require('./lib/csvgenerator');
+const { downloader, csvgenerator } = require('./lib')
 
 downloader({
   source: 'https://s3-ap-southeast-2.amazonaws.com/catch-code-challenge/challenge-1-in.jsonl',
