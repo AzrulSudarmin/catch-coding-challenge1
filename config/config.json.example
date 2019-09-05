@@ -1,3 +1,9 @@
 {
-  "jsonlSource" : "https://s3-ap-southeast-2.amazonaws.com/catch-code-challenge/challenge-1-in.jsonl"
+  "jsonl_source" : "https://s3-ap-southeast-2.amazonaws.com/catch-code-challenge/challenge-1-in.jsonl",
+  "db_driver": "pg",
+  "db_host": "127.0.0.1",
+  "db_user" : "postgres",
+  "db_name" : "catch",
+  "db_password" : "123",
+  "db_port" : 5432
 }

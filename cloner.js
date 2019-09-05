@@ -1,10 +1,10 @@
-const fs = require('fs');
 const { downloader, csvgenerator } = require('./lib');
 
-const config = JSON.parse(fs.readFileSync('./config/config.json', 'utf8'));
+//load configuration file
+require('./config')();
 
 downloader({
-  source: config.jsonlSource,
+  source: process.env.JSONL_SOURCE,
   targetDirectory: 'storage',
   targetFileName: 'order.jsonl'
 })
@@ -14,7 +14,7 @@ downloader({
   targetFileName: 'order.csv'
 }))
 .then(() => {
-  console.log('process done')
+  // console.log('Cloner done')
   process.exit()
 })
 .catch(err => {
