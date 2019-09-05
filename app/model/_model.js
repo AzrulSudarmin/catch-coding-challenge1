@@ -1,3 +1,6 @@
+const types = require('pg').types;
+types.setTypeParser(1082, str => str);
+
 global.knexConnection = require('knex')({
   client: 'pg',
   timezone : 'UTC',
@@ -16,5 +19,6 @@ global.knexConnection = require('knex')({
 const bookshelf = require('bookshelf')(knexConnection);
 bookshelf.plugin('registry');  
 bookshelf.plugin(require('bookshelf-upsert'));
+bookshelf.plugin('processor')
 
 module.exports = bookshelf;

@@ -7,6 +7,7 @@ const map = {
   item: {
     orderId: "order_id",
     orderDateTime: "order_datetime",
+    orderDateTimeForHumans: "order_datetime",
     totalOrderValue: "total_order_value",
     averageUnitPrice: "average_unit_price",
     distinctUnitCount: "distinct_unit_count",
@@ -17,6 +18,10 @@ const map = {
     updatedAt: "updated_at"
   },
   operate: [
+      {
+        run: date => dateTimeForHumans(date) ,  
+        on: "orderDateTimeForHumans"
+      } ,
       {
         run: date => dateTimeForHumans(date) ,  
         on: "createdAtForHumans"

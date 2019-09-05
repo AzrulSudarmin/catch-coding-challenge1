@@ -13,7 +13,6 @@ const store = ({
   distinct_unit_count, total_units_count, customer_state
  }) =>{
   const currentDateTime = dateTimeForDB();
-
   return orderModel
     .forge({ 
       order_id, 

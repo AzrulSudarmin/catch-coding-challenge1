@@ -1,6 +1,5 @@
 const zonedTimeToUtc = require('date-fns-tz/zonedTimeToUtc');
 const utcToZonedTime = require('date-fns-tz/utcToZonedTime');
-const usLocale = require('date-fns/locale/en-US');
 const format = require('date-fns-tz/format');
 
 const isDateObject = date => date instanceof Date;
@@ -19,8 +18,8 @@ const dateTimeForHumans = (date = currentDateTime(), timeZone = _timeZone) =>
 const dateTimeForDB = (date = currentDateTime()) =>
   format(toDateObject(date), 'yyyy/MM/dd HH:mm:ss', { timeZone: 'Africa/Abidjan'}); //Save as utc timezone
 
-const formatDate = (newFormat = 'yyyy/MM/dd HH:mm:ss', date = currentDateTime(), timeZone = 'Africa/Abidjan', locale = null) =>
-  format(toDateObject(date), newFormat, { timeZone, locale });
+const formatDate = (newFormat = 'yyyy/MM/dd HH:mm:ss', date = currentDateTime(), timeZone = 'Africa/Abidjan') =>
+  format(toDateObject(date), newFormat, { timeZone });
 
 module.exports = {
   currentDateTime ,

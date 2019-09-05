@@ -20,7 +20,7 @@ const orderBuilder = ({ order_id, order_date, items, discounts, customer }) => {
     const totalOrder = getTotalOrder(items);
     const totalUnits = getTotalUnits(items);
     const totalDiscount = getDiscount(discounts, totalOrder);  
-    const orderDate = utcToZonedTime(new Date(order_date), 'Africa/Abidjan');
+    const orderDate = new Date(order_date);
 
     //exclude record with 0 order value
     return totalOrder > 0 ? {
