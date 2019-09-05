@@ -5,11 +5,11 @@
   "main": "server.js",
   "scripts": {
     "clone": "node cloner",
-    "start": "node server.js",
+    "start": "node cloner && node server.js",
     "watch": "gulp watch",
     "migrate": "knex migrate:latest --env=development",
     "migrate:rollback": "knex migrate:rollback --env=development",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha ./tests"
   },
   "repository": {
     "type": "git",
@@ -28,8 +28,8 @@
     "bookshelf": "^0.15.1",
     "bookshelf-upsert": "^0.2.0",
     "browser-sync": "^2.26.7",
+    "csv-validator": "0.0.3",
     "csv-write-stream": "^2.0.0",
-    "csvlint": "^0.2.2",
     "date-fns": "^2.0.1",
     "date-fns-tz": "^1.0.7",
     "event-stream": "^4.0.1",
@@ -42,5 +42,8 @@
     "node-json-transform": "^1.0.19",
     "pg": "^7.12.1",
     "request": "^2.88.0"
+  },
+  "devDependencies": {
+    "mocha": "^6.2.0"
   }
 }
