@@ -5,17 +5,18 @@
  * @param {String} source - JSONl location to read and stream
  * @param {String} targetDirectory - target file location
  * @param {String} targetFileName - target file name
+ * @param {Function} streamLineHandler - trigger when csv read by line and passing the line data and also csv stream
  * @example
- * csvgenerator({ fileSource: 'storage/order.jsonl', targetDirectory: 'storage', targetFileName: 'order.csv'})
+ * csvgenerator({ fileSource: 'storage/order.jsonl', targetDirectory: 'storage', targetFileName: 'order.csv'}, streamLineHandler)
  * .then(result => console.log('csv has been generated'))
  */
 
+//dependency
 const fs = require('fs');
 const es = require('event-stream');
 const csvWriter = require('csv-write-stream');
-const csvLineWrite = require('./csvlinewriter');
 
-const csvgenerator = ({source, targetDirectory, targetFileName}) => new Promise((resolve, reject) => {
+const csvgenerator = ({source, targetDirectory, targetFileName}, streamLineHandler) => new Promise((resolve, reject) => {
   
   console.log('\x1b[33m%s\x1b[0m', `Starting to write ${targetFileName}`);
 
@@ -41,17 +42,8 @@ const csvgenerator = ({source, targetDirectory, targetFileName}) => new Promise(
     .createReadStream(source)
     .pipe(es.split())
     .pipe(
-      //read line by line data inside jsonl files
-      es.mapSync(lines => {
-        try {
-          const order = JSON.parse(lines);
-          //write exist order to csv
-          if (order.items) csvLineWrite({ csv, order });
-        } catch (error) {
-          // console.log(error.message);
-          return;
-        }
-      })
+      //read data by line inside jsonl files
+      es.mapSync(streamLineHandler)
       .on('error', err => {
         reject();
       })
