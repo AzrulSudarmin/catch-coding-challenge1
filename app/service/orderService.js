@@ -10,8 +10,8 @@ const orderModel = require('../model/orderModel');
 const store = ({ 
   order_id, order_datetime, total_order_value, average_unit_price, 
   distinct_unit_count, total_units_count, customer_state
- }) => new Promise((resolve, reject) => {
-  orderModel
+ }) =>{
+  return orderModel
     .forge({ 
       order_id, 
       order_datetime, 
@@ -22,8 +22,8 @@ const store = ({
       customer_state
     })
     .where({ order_id })  
-    .upsert() 
-})
+    .upsert()
+}
 
 const fetch = () => new Promise((resolve, reject) => {
   orderModel

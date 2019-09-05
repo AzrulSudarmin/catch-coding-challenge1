@@ -43,8 +43,23 @@ const csvgenerator = ({source, targetDirectory, targetFileName}, streamLineHandl
     .pipe(es.split())
     .pipe(
       //read data by line inside jsonl files
-      es.mapSync(streamLineHandler)
+      es.through( function( lines )  {
+        this.pause();
+
+        streamLineHandler(lines)
+          .then(data => {
+            this.resume();
+            console.log(`order ${data.order_id} has been stored in database and has been write to csv files`);
+
+            if (data) csv.write(data);
+          })
+          .catch(err => {
+            // console.log(err)
+            this.resume();
+          })
+      })
       .on('error', err => {
+        console.log(err)
         reject();
       })
       .on('end', () => {

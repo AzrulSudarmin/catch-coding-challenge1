@@ -1,6 +1,8 @@
 const orderDataBuilder = require('../builder/orderBuilder');
+const orderService = require('../service/orderService');
 
-const lineManipulator = (selectedLine, csv) => {
+
+const lineManipulator = selectedLine => new Promise((resolve, reject) => {
   try {
     const order = JSON.parse(selectedLine);
     
@@ -10,15 +12,24 @@ const lineManipulator = (selectedLine, csv) => {
     //build order data to single object
     const orderData = orderDataBuilder(order);
     
-    //write order data to csv files when total order value more than zero
+    //write order data to csv files when total order value more than zero    
     if (orderData.total_order_value) {
-      console.log(`write order ${order.order_id} to csv files`);
-      csv.write(orderData);
+      orderService.store(orderData)
+        .then(() => {
+          resolve(orderData)
+        })
+        .catch(err => {
+          console.log(err);
+          
+          reject(err)
+        });
+    } else {
+      resolve(null)
     }
 
   } catch (error) {
-    return;
+    reject(error)
   }
-};
+});
 
 module.exports = lineManipulator;

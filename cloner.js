@@ -1,7 +1,7 @@
-const { downloader, csvgenerator, lineManipulator } = require('./app/actions');
-
 //load configuration file
 require('./config')();
+
+const { downloader, csvgenerator, lineManipulator } = require('./app/actions');
 
 downloader({
   source: process.env.JSONL_SOURCE,
@@ -14,7 +14,7 @@ downloader({
   targetFileName: 'order.csv'
 }, lineManipulator ))
 .then(() => {
-  // console.log('Cloner done')
+  console.log('Download, store, and write csv file has done')
   process.exit()
 })
 .catch(err => {
