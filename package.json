@@ -4,7 +4,7 @@
   "description": "A JSON Grabber",
   "main": "index.js",
   "scripts": {
-    "grab": "node index",
+    "clone": "node cloner",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
