@@ -21,7 +21,6 @@ Order data cloner on the fly with event-stream to handling large dataset to prev
 6. Edit config/config.json based on your local setup especially database
 7. Migrate database `npm run migrate`
 
-
 ## How To run
 ```js
 npm start
