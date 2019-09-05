@@ -8,9 +8,9 @@ exports.up = function(knex) {
     t.integer('distinct_unit_count').notNull();
     t.integer('total_units_count').notNull();
     t.string('customer_state').notNull();
-    t.dateTime('createdAt').nullable();
-    t.dateTime('updatedAt').nullable();
-    t.dateTime('deletedAt').nullable();
+    t.dateTime('created_at').nullable();
+    t.dateTime('updated_at').nullable();
+    t.dateTime('deleted_at').nullable();
   });
 };
 

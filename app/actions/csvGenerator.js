@@ -51,6 +51,7 @@ const csvgenerator = ({source, targetDirectory, targetFileName}, streamLineHandl
             this.resume();
             console.log(`order ${data.order_id} has been stored in database and has been write to csv files`);
 
+            //increment csv file with stream data
             if (data) csv.write(data);
           })
           .catch(err => {

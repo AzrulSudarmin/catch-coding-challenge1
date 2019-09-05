@@ -1,6 +1,12 @@
+/**
+ * @name lineManipulator
+ * @summary
+ * Function to write stream file
+ * @param {String} selectedLine - string from json format
+ */
+
 const orderDataBuilder = require('../builder/orderBuilder');
 const orderService = require('../service/orderService');
-
 
 const lineManipulator = selectedLine => new Promise((resolve, reject) => {
   try {
@@ -19,8 +25,7 @@ const lineManipulator = selectedLine => new Promise((resolve, reject) => {
           resolve(orderData)
         })
         .catch(err => {
-          console.log(err);
-          
+          // console.log(err);
           reject(err)
         });
     } else {
