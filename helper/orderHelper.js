@@ -6,7 +6,7 @@ const getDiscount = ({discounts, total}) =>
     discount.type === 'DOLLAR' 
       ? discount.value 
       : (total/100)*discount.value
-  ));
+  ), 0);
 
 module.exports = {
   getDiscount ,
