@@ -32,6 +32,8 @@ const store = ({
 
 const get = () => new Promise((resolve, reject) => {
   orderModel
+    .forge()
+    .orderBy('order_id', 'ASC')
     .fetchAll()
     .then(orders => {
       resolve(orders.toJSON());

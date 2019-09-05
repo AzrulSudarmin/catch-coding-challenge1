@@ -1,6 +1,8 @@
 const express = require('express')
+const open = require('open')
 const app = express()
 const port = 3000
+
 
 require('./config')()
 
@@ -19,4 +21,7 @@ app.get('/', (req, res) => {
     })
 })
 
-app.listen(port, () => console.log(`App listening on port ${port}!`))
+app.listen(port, () => {
+  console.log(`Server is running, Please open http://localhost:${port}!`)
+  open('http://localhost:3000')
+})
