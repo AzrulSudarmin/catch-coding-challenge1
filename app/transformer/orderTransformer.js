@@ -19,11 +19,37 @@ const map = {
   },
   operate: [
       {
-        run: date => dateTimeForHumans(date) ,  
+        run: date => {
+          const dateObject = new Date(date);
+          
+          return dateTimeForHumans(
+            new Date(
+              dateObject.getUTCFullYear(),
+              dateObject.getUTCMonth(), 
+              dateObject.getUTCDate(), 
+              dateObject.getUTCHours(),
+              dateObject.getUTCMinutes(),
+              dateObject.getUTCSeconds()
+            )
+          )
+        } ,
         on: "orderDateTimeForHumans"
       } ,
       {
-        run: date => dateTimeForHumans(date) ,  
+        run: date => {
+          const dateObject = new Date(date);
+
+          return dateTimeForHumans(
+            new Date(
+              dateObject.getUTCFullYear(),
+              dateObject.getUTCMonth(), 
+              dateObject.getUTCDate(), 
+              dateObject.getUTCHours(),
+              dateObject.getUTCMinutes(),
+              dateObject.getUTCSeconds()
+            )
+          )
+        } ,  
         on: "createdAtForHumans"
       }
   ] ,
